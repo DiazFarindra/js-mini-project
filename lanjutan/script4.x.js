@@ -10,24 +10,24 @@ const number = [-1, 8, 9, 1, 4, -5, -4, 3, 2, 9]
 // }
 // console.log(newNumber)
 
-// filter method
+//? filter method
 // const newNumber = number.filter((n) => n >= 3)
 // console.log(newNumber)
 
 
-// map
+//? map
 // const newNumber = number.map((n) => n * 2)
 // console.log(newNumber);
 
 
-// reduce
+//? reduce
 // const newNumber = number.reduce((accumulator, currentvalue) => {
 //     return accumulator + currentvalue
 // }, 10)
 // console.log(newNumber)
 
 
-// method chaining
+//? method chaining
 // const result = number.filter((n) => n > 5)
 //     .map((n) => n * 3)
 //     .reduce((acc, cur) => acc + cur)
