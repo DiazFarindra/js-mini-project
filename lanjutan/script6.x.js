@@ -59,13 +59,52 @@
 
 
 // in function
+// const data = {
+//     name: 'diaz farindra',
+//     age: 18,
+//     email: 'farindrad@gmail.com'
+// }
+
+// function getData({ name }) {
+//     return name
+// }
+// console.log(getData(data))
+
+
+//? Destructutring
+
+// array
+// function kalkulasi(a, b) {
+//     return [a + b, a - b, a * b, a / b]
+// }
+
+// object
+// function kalkulasi(a, b) {
+//     return {
+//         tambah: a + b,
+//         kurang: a - b,
+//         kali: a * b,
+//         bagi: a / b
+//     }
+// }
+
+// const {tambah, kurang, kali, bagi} = kalkulasi(2, 3)
+// console.log(tambah, kurang, kali, bagi)
+
+
+// assignment object
 const data = {
-    name: 'diaz farindra',
-    age: 18,
-    email: 'farindrad@gmail.com'
+    nama: 'diaz farindra',
+    umur: 18,
+    email: 'farindrad@gmail.com',
+    nilai: {
+        uts: 100,
+        uas: 95
+    }
 }
 
-function getData({ name }) {
-    return name
+function result({ nama, umur, nilai: { uts, uas } }) {
+    return `nama ${nama}, umur ${umur} nilai uts ${uts}, nilai uas ${uas}`
 }
-console.log(getData(data))
+
+console.log(result(data))
