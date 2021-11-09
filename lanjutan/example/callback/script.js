@@ -1,10 +1,39 @@
 // fecth refactor version (vanila js)
 const search_button = document.querySelector('.search-button')
 search_button.addEventListener('click', async function () {
-    const input = document.querySelector('.input-keyword')
-    const movies = await getMovies(input.value)
-    updateUI(movies)
+    try {
+        const input = document.querySelector('.input-keyword')
+        const movies = await getMovies(input.value)
+        updateUI(movies)
+    } catch (error) {
+        alert(error)
+    }
 })
+
+function getMovies(keyword) {
+    return fetch('http://www.omdbapi.com/?apikey=2f6f6aad&s=' + keyword)
+            .then(response => {
+                if (! response.ok) {
+                    throw new Error(response.statusText)
+                }
+
+                return response.json()
+            })
+            .then(response => {
+                if (response.Response === 'False') {
+                    throw new Error(response.Error)
+                }
+
+                return response.Search
+            })
+}
+
+function updateUI(movies) {
+    let cards = ''
+    movies.forEach(movie => cards += showCards(movie));
+    const movie_container = document.querySelector('#movie-card')
+    movie_container.innerHTML = cards
+}
 
 // event binding
 document.addEventListener('click', async function (element) {
@@ -25,19 +54,6 @@ function updateUIDetail(movie) {
     const movie_modal = showModalDetail(movie)
     const modal_body = document.querySelector('.modal-body')
     modal_body.innerHTML = movie_modal
-}
-
-function getMovies(keyword) {
-    return fetch('http://www.omdbapi.com/?apikey=2f6f6aad&s=' + keyword)
-            .then(response => response.json())
-            .then(response => response.Search)
-}
-
-function updateUI(movies) {
-    let cards = ''
-    movies.forEach(movie => cards += showCards(movie));
-    const movie_container = document.querySelector('#movie-card')
-    movie_container.innerHTML = cards
 }
 
 function showCards(movie) {
