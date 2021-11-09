@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nama": "diaz farindra",
+        "email": "diaz@gmail.com",
+        "telp": 1234567890
+    },
+    {
+        "id": 2,
+        "nama": "zikri endisyah",
+        "email": "zikri@gmail.com",
+        "telp": 1234567890
+    },
+    {
+        "id": 3,
+        "nama": "haikal raihansyah",
+        "email": "haikal@gmail.com",
+        "telp": 1234567890
+    }
+]
