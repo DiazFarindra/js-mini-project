@@ -6,7 +6,13 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
     // lodash
-    const num = _.random(0, 20)
+    const num = _.random(0, 20);
+
+    const greet = _.once(() => {
+        console.log('hello')
+    })
+
+    greet()
 
     // set header content type
     res.setHeader('Content-Type', 'text/html')

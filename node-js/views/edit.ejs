@@ -1,0 +1,42 @@
+<%- include('./partials/start.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+<div class="create-blog content">
+    <form id="form">
+        <label for="title">blog title:</label>
+        <input type="text" id="title" name="title" value="<%= blog.title %>" required>
+
+        <label for="snippet">blog snippet:</label>
+        <input type="text" id="snippet" name="snippet" value="<%= blog.snippet %>" required>
+
+        <label for="body">blog body:</label>
+        <textarea id="body" name="body" required><%= blog.body %></textarea>
+
+        <button>submit</button>
+    </form>
+</div>
+
+<script>
+    const data = document.getElementById('form')
+
+    data.onsubmit = async (e) => {
+        e.preventDefault()
+
+        let res = await fetch('/blogs/<%= blog._id %>', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: data.title.value,
+                snippet: data.snippet.value,
+                body: data.body.value
+            })
+        })
+
+        let result = await res.json()
+        window.location.href = result.redirect
+    }
+</script>
+
+<%- include('./partials/end.ejs') %>
